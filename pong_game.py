@@ -14,7 +14,10 @@ from kivy.clock import Clock
 from random import randint
 
 class Paddle(Widget):
-    pass
+    def ball_bounce(self,ball):
+        if self.collide_widget(ball):
+             ball.velocity_x *= -1.1
+             
 
 class PongBall(Widget):
     # velocity(direction of movement) of the ball on x and y axis
@@ -48,6 +51,9 @@ class PongGame(Widget):
         # bounce off left and right
         if (self.ball.x < 0) or (self.ball.right > self.width):
             self.ball.velocity_x *= -1
+            
+        self.player1.ball_bounce(self.ball)
+        self.player2.ball_bounce(self.ball)
 
     def on_touch_move(self, touch):
         if touch.x < self.width / 4:
