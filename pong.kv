@@ -6,6 +6,7 @@
             size: self.size
 
 <PongGame>:    
+    ball: pong_ball
     canvas:
         Rectangle:
             pos: self.center_x, 0
@@ -15,6 +16,7 @@
             pos: 0, 0
             size: self.width / 2, self.height
             source: 'img.jpg'        
+    
     Label:
         font_size: 70  
         center_x: root.width / 4
@@ -27,6 +29,6 @@
         top: root.top - 50
         text: "0"
 	
-
 	PongBall:
+    	id: pong_ball
         center: self.parent.center

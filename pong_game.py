@@ -8,8 +8,10 @@ Created on Sat May 16 20:25:35 2020
 
 from kivy.app import App
 from kivy.uix.widget import Widget
-from kivy.properties import NumericProperty, ReferenceListProperty
+from kivy.properties import NumericProperty, ReferenceListProperty, ObjectProperty
 from kivy.vector import Vector
+from kivy.clock import Clock
+from random import randint
 
 class PongBall(Widget):
     # velocity(direction of movement) of the ball on x and y axis
@@ -25,12 +27,26 @@ class PongBall(Widget):
         self.pos = Vector(*self.velocity) + self.pos
 
 class PongGame(Widget):
-    pass
+    ball= ObjectProperty(None)
+    
+    # change the ball velocity given inside vector, 4 denotes the x velocity
+    def serve_ball(self):
+        self.ball.velocity=Vector(4,0).rotate(randint(0,360))
+    
+    def update(self, dt):
+        self.ball.move()
+        
+
 
 
 class PongApp(App):
     def build(self):
-        return PongGame()
+        game=PongGame()
+        game.serve_ball()
+        
+        # here in 1 sec 60 images will be shown and we need to call the update function regularly
+        Clock.schedule_interval(game.update, 1.0 / 60.0)
+        return game
 
 
 if __name__ == '__main__':
