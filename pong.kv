@@ -1,9 +1,12 @@
 <PongBall>:
-    size: 50, 50
+    size: 50,50
     canvas:
         Ellipse:
             pos: self.pos
             size: self.size
+            source: 'ball.png'
+    
+           
 
 <PongGame>:    
     ball: pong_ball
@@ -16,7 +19,7 @@
             pos: 0, 0
             size: self.width / 2, self.height
             source: 'img.jpg'        
-    
+
     Label:
         font_size: 70  
         center_x: root.width / 4

@@ -31,10 +31,19 @@ class PongGame(Widget):
     
     # change the ball velocity given inside vector, 4 denotes the x velocity
     def serve_ball(self):
-        self.ball.velocity=Vector(4,0).rotate(randint(0,360))
+        self.ball.velocity=Vector(8,0).rotate(randint(0,360))
     
     def update(self, dt):
         self.ball.move()
+        
+        # bounce off top and bottom
+        if (self.ball.y < 0) or (self.ball.top > self.height):
+            self.ball.velocity_y *= -1
+
+        # bounce off left and right
+        if (self.ball.x < 0) or (self.ball.right > self.width):
+            self.ball.velocity_x *= -1
+
         
 
 
