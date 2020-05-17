@@ -1,3 +1,12 @@
+<Paddle>:
+    size: 25,100
+    canvas:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'wood.jpg'
+            
+
 <PongBall>:
     size: 50,50
     canvas:
@@ -6,8 +15,6 @@
             size: self.size
             source: 'ball.png'
     
-           
-
 <PongGame>:    
     ball: pong_ball
     canvas:
@@ -35,3 +42,13 @@
 	PongBall:
     	id: pong_ball
         center: self.parent.center
+        
+    Paddle:
+        id: player_left
+        x: root.x
+        center_y: root.center_y
+        
+    Paddle:
+        id: player_right
+        x: root.width-self.width
+        center_y: root.center_y

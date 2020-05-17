@@ -13,6 +13,9 @@ from kivy.vector import Vector
 from kivy.clock import Clock
 from random import randint
 
+class Paddle(Widget):
+    pass
+
 class PongBall(Widget):
     # velocity(direction of movement) of the ball on x and y axis
     # numeric property helps in identifying the datatypes when used in other sources such as Java for android
