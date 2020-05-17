@@ -31,6 +31,8 @@ class PongBall(Widget):
 
 class PongGame(Widget):
     ball= ObjectProperty(None)
+    player1=ObjectProperty(None)
+    player2=ObjectProperty(None)
     
     # change the ball velocity given inside vector, 4 denotes the x velocity
     def serve_ball(self):
@@ -47,7 +49,11 @@ class PongGame(Widget):
         if (self.ball.x < 0) or (self.ball.right > self.width):
             self.ball.velocity_x *= -1
 
-        
+    def on_touch_move(self, touch):
+        if touch.x < self.width / 4:
+            self.player1.center_y = touch.y
+        if touch.x > self.width * 3/4:
+            self.player2.center_y = touch.y  
 
 
 
