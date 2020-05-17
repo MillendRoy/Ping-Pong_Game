@@ -8,9 +8,13 @@
 <PongGame>:    
     canvas:
         Rectangle:
-            pos: self.center_x - 5, 0
-            size: 10, self.height
-            
+            pos: self.center_x, 0
+            size: self.width, self.height
+            source: 'image.jpg'
+        Rectangle:
+            pos: 0, 0
+            size: self.width / 2, self.height
+            source: 'img.jpg'        
     Label:
         font_size: 70  
         center_x: root.width / 4
